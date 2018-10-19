@@ -7,3 +7,13 @@ before_install:
 
 script:
   - docker run rfashwal/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-551353824744"
+  bucket_path: "docker-react"
+  on:
+    branch: master
